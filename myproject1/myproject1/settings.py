@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from celery.schedules import crontab, timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,6 +28,24 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#config celery
+#config redis
+# REDIS_HOST = 'localhost'
+# REDIS_PORT = '6379'
+# BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+
+# CELERY_BROKER_URL = 'redis://redis:7000/0'
+CELERY_BROKER_URL = 'redis://localhost:7000/0'
+CELERY_TIMEZONE = 'UTC'
+# CELERY_BACKEND_URL = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_CACHE_BACKEND = 'django-cache'
+CELERY_BEAT_SCHEDULE = {
+    'run-every-minute': {
+        'task': 'products.tasks.debug_task',
+        'schedule': timedelta(seconds=30)#crontab(minute='*/1')
+    },
+}
 
 # Application definition
 
@@ -38,7 +57,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'products',
-    'customer'
+    'customer',
+    'django_celery_results',
+    'django_celery_beat'
 ]
 
 MIDDLEWARE = [
