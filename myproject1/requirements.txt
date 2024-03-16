@@ -1,0 +1,9 @@
+django
+djangorestframework
+pyjwt
+celery
+django-celery-results
+django-celery-beat
+redis
+waitress
+djangorestframework-simplejwt

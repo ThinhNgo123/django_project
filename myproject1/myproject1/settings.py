@@ -28,13 +28,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-#config celery
 #config redis
 # REDIS_HOST = 'localhost'
 # REDIS_PORT = '6379'
 # BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 
-# CELERY_BROKER_URL = 'redis://redis:7000/0'
+#config celery
 CELERY_BROKER_URL = 'redis://localhost:7000/0'
 CELERY_TIMEZONE = 'UTC'
 # CELERY_BACKEND_URL = 'redis://redis:6379/0'
@@ -59,7 +58,10 @@ INSTALLED_APPS = [
     'products',
     'customer',
     'django_celery_results',
-    'django_celery_beat'
+    'django_celery_beat',
+    'rest_framework',
+    'rest_framework_simplejwt'
+    # 'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [
@@ -144,3 +146,18 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_COOKIE_SECURE = False
+# CSRF_USE_SESSIONS = True
+
+#config rest framework
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+#config jwt token
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5)
+}

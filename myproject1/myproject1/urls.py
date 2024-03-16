@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+# from django.core.management.utils import get_random_secret_key
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('products.urls')),
