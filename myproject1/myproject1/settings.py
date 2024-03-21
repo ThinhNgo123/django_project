@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 
 #config celery
 CELERY_BROKER_URL = 'redis://localhost:7000/0'
+# CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_TIMEZONE = 'UTC'
 # CELERY_BACKEND_URL = 'redis://redis:6379/0'
 CELERY_RESULT_BACKEND = 'django-db'
@@ -42,7 +43,7 @@ CELERY_CACHE_BACKEND = 'django-cache'
 CELERY_BEAT_SCHEDULE = {
     'run-every-minute': {
         'task': 'products.tasks.debug_task',
-        'schedule': timedelta(seconds=30)#crontab(minute='*/1')
+        'schedule': timedelta(seconds=5)#crontab(minute='*/1')
     },
 }
 
@@ -147,7 +148,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_COOKIE_SECURE = False
+# CSRF_COOKIE_SECURE = False
 # CSRF_USE_SESSIONS = True
 
 #config rest framework

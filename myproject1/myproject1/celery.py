@@ -1,4 +1,4 @@
-#cmd: celery worker -A myproject --pool=solo worker -l info
+#cmd: celery -A your_app_name worker --pool=solo -l info
 from __future__ import absolute_import, unicode_literals
 import os
 from celery import Celery
