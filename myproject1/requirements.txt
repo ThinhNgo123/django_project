@@ -7,3 +7,4 @@ django-celery-beat
 redis
 waitress
 djangorestframework-simplejwt
+psycopg2
