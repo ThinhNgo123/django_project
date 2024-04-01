@@ -1,0 +1,13 @@
+###
+GET http://localhost:8000/products/token HTTP/1.1
+
+
+###
+POST http://localhost:8000/admin_devices/register HTTP/1.1
+# X-CSRFToken: 2tc8VaVZZsEKhL2t89kllhERnUdnRcQywIHDqYqJ9NCxBLBCAXMNVxUm1soeuuME
+Content-Type: application/json
+
+{
+    "username": "admin2",
+    "password": "123456"
+}

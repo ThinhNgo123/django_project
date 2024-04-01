@@ -56,13 +56,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'products',
-    'customer',
-    'user_devices',
     'django_celery_results',
     'django_celery_beat',
     'rest_framework',
-    'rest_framework_simplejwt'
+    'rest_framework_simplejwt',
+    'products',
+    'customer',
+    'user_devices',
+    'tokens',
+    'connect',
+    'database',
+    'device',
+    'error',
+    'FTP_Server',
+    'memory',
+    'relay',
+    'sensor',
+    'thiet_bi'
     # 'rest_framework.authtoken'
 ]
 
@@ -100,23 +110,23 @@ WSGI_APPLICATION = 'myproject1.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db_myproject1',
-        'USER': 'postgres',
-        'PASSWORD': '123456',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'db_myproject1',
+#         'USER': 'postgres',
+#         'PASSWORD': '123456',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation
@@ -175,4 +185,4 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5)
 }
 
-AUTH_USER_MODEL = 'user_devices.UserDevices'
+AUTH_USER_MODEL1 = 'user_devices.UserDevices'

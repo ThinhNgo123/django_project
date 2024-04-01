@@ -70,6 +70,8 @@ def signup(request):
             is_staff=True,
             is_active=True)
         user.save()
+        # User.objects.create()
+        # User.objects.create_user()
         # login(request, user)
         return JsonResponse("Tai khoan duoc tao thanh cong", safe=False)
 

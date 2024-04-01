@@ -4,6 +4,7 @@ import os
 from celery import Celery
 from celery.schedules import crontab
 import logging
+
 logger = logging.getLogger("Celery")
 logger.setLevel(logging.INFO)
 handler = logging.FileHandler("log.txt")
@@ -12,24 +13,8 @@ logger.addHandler(handler)
 # set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject1.settings')
 
-app = Celery('myproject1')#, include="myproject1.celery")#, broker="redis://localhost")
-# app.conf.update(
-#     task_serializer='json',
-#     accept_content=['json'],  # Ignore other content
-#     result_serializer='json',
-#     timezone='Europe/Oslo',
-#     enable_utc=True,
-# )
-# app.conf.broker_url     = 'redis://localhost:6379/0'
-# app.conf.beat_schedule = {
-#     'debug-task': {
-#         'task': 'myproject1.celery.debug_task',
-#         'schedule': crontab(minute='*/1'),
-#         # 'args': (16, 16)
-#     },
-# }
-# app.conf.timezone = 'UTC'
-# app.conf.result_backend = 'redis://localhost:6379/0'
+app = Celery('myproject1')
+
 app.config_from_object('django.conf:settings', namespace='CELERY')
 # Using a string here means the worker doesn't have to serialize
 # the configuration object to child processes.
@@ -38,7 +23,21 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 # app.config_from_object('django.conf:settings', namespace='CELERY')
 
 # Load task modules from all registered Django app configs.
-app.autodiscover_tasks(['products'])
+app.autodiscover_tasks([
+    'products',
+    'customer',
+    'user_devices',
+    'tokens',
+    'connect',
+    'database',
+    'device',
+    'error',
+    'FTP_Server',
+    'memory',
+    'relay',
+    'sensor',
+    'thiet_bi'
+    ])
 
 # @app.on_after_configure.connect
 # def setup_periodic_tasks(sender, **kwargs):

@@ -1,0 +1,25 @@
+from django.db import models
+from thiet_bi.models import ThietBi
+# Create your models here.
+class Memory(models.Model):
+    device_id = models.ForeignKey(ThietBi, on_delete=models.CASCADE)
+    disk_status = models.CharField(max_length=100)
+    disk_name = models.CharField(max_length=100)
+    disk_total = models.CharField(max_length=100)
+    disk_used = models.CharField(max_length=100)
+    disk_free = models.CharField(max_length=100)
+    USB1_free = models.CharField(max_length=100)
+    USB1_used = models.CharField(max_length=100)
+    USB1_total = models.CharField(max_length=100)
+    USB1_name = models.CharField(max_length=100)
+    USB1_status = models.CharField(max_length=100)
+    USB2_free = models.CharField(max_length=100)
+    USB2_used = models.CharField(max_length=100)
+    USB2_total = models.CharField(max_length=100)
+    USB2_name = models.CharField(max_length=100)
+    USB2_status = models.CharField(max_length=100)
+    USB3_free = models.CharField(max_length=100)
+    USB3_used = models.CharField(max_length=100)
+    USB3_total = models.CharField(max_length=100)
+    USB3_name = models.CharField(max_length=100)
+    USB3_status = models.CharField(max_length=100)

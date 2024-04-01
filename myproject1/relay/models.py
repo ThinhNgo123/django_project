@@ -1,0 +1,27 @@
+from django.db import models
+from thiet_bi.models import ThietBi
+# Create your models here.
+class Relay(models.Model):
+    device_id = models.ForeignKey(ThietBi, on_delete=models.CASCADE)
+    ETH_MAC = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
+    status = models.CharField(max_length=100)
+    activation = models.CharField(max_length=100)
+    input_protocol = models.CharField(max_length=100)
+    input_modbus_TCP_client = models.CharField(max_length=100)
+    input_alarm_sensor_list = models.CharField(max_length=100)
+    input_local_manual = models.CharField(max_length=100)
+    output_modbus_TCP_IP_IP = models.CharField(max_length=100)
+    output_modbus_TCP_IP_type = models.CharField(max_length=100)
+    output_modbus_TCP_IP_address = models.CharField(max_length=100)
+    output_modbus_TCP_IP_timeout = models.IntegerField()
+    output_modbus_TCP_IP_ID = models.CharField(max_length=100)
+    output_modbus_RTU_port = models.CharField(max_length=100)
+    output_modbus_RTU_address = models.IntegerField()
+    output_modbus_RTU_type = models.CharField(max_length=100)
+    output_modbus_RTU_ID = models.IntegerField()
+    output_modbus_RTU_timeout = models.IntegerField()
+    output_modbus_RTU_parity = models.CharField(max_length=100)
+    output_modbus_RTU_stop_bits = models.IntegerField()
+    output_modbus_RTU_data_bits = models.IntegerField()
+    output_modbus_RTU_baudrate = models.IntegerField()
