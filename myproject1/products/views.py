@@ -10,7 +10,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password, check_password
-# from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view
 # from rest_framework.views import APIView
 # from rest_framework.response import Response
 # from rest_framework.status import HTTP_201_CREATED, HTTP_400_BAD_REQUEST
